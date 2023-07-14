@@ -1,11 +1,5 @@
 module.exports = {
-  extends: ["next", "turbo", "prettier"],
-  settings: {
-    react: {
-      version: "detect",
-    },
-  },
-  parserOptions: {
-    babelOptions: {},
-  },
+	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'next', 'turbo', 'prettier'],
+	parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint'],
 };
