@@ -5,8 +5,7 @@
 	"singleQuote": true,
 	"useTabs": true,
 	"tabWidth": 2,
-	"printWidth": 125,
+	"printWidth": 135,
 	"proseWrap": "always",
-	"trailingComma": "all",
-	"editor.formatOnSave": true
+	"trailingComma": "all"
 }
