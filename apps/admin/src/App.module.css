@@ -1,0 +1,48 @@
+:global(body) {
+    /*colors */
+    --primary: hsl(36, 53%, 82%);
+    --secondary: hsl(120, 100%, 50%);
+    --tertiary: hsl(240, 100%, 50%);
+    --success: hsl(120, 100%, 25%);
+    --info: hsl(224, 73%, 58%);
+    --danger: hsl(0, 100%, 44%);
+    --warning: hsl(35, 100%, 50%);
+    --grey10: hsl(0, 0%, 94%);
+    --grey20: hsl(0, 0%, 85%);
+    --grey40: hsl(0, 0%, 65%);
+    --grey60: hsl(0, 0%, 45%);
+    --grey80: hsl(0, 0%, 30%);
+    --grey100: hsl(0, 0%, 20%);
+
+    --main-bg-color: hsl(205, 30%, 20%);
+
+    /*radius */
+    --border1: 0.125rem;
+    --border2: 0.25rem;
+    --border3: 0.5rem;
+    --border4: 0.75rem;
+    --border5: 1rem;
+    --border6: 1.25rem;
+
+    /* breakpoints */
+    --mobile-breakpoint: 480px;
+    --tablet-breakpoint: 768px;
+    --desktop-breakpoint: 1024px;
+    --desktop--large-breakpoint: 1404px;
+
+
+    /* z-index */
+    --z-index1: 10;
+    --z-index2: 20;
+    --z-index3: 30;
+    --z-index4: 40;
+    --z-index5: 50;
+    
+    --main-font-family: Arial, sans-serif;
+
+    background-color: var(--main-bg-color)
+}
+
+.app {
+}
+

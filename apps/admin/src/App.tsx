@@ -1,16 +1,15 @@
-import { CounterButton, NewTabLink } from 'ui';
+// COMPONENTS
+import { Button } from 'ui';
+
+// STYLES
+import styles from 'src/App.module.css';
 
 const App = () => (
-	<div className="container">
-		<div />
+	<div className={styles.app}>
 		<h1 className="title">
 			<span>Kitchen Sink</span>
+			<Button onClick={() => console.log('app', 'click')}>Hello</Button>
 		</h1>
-		<CounterButton />
-		<p className="description">
-			Built With <NewTabLink href="https://turbo.build/repo">Turborepo</NewTabLink> +{' '}
-			<NewTabLink href="https://vitejs.dev/">Vite</NewTabLink>
-		</p>
 	</div>
 );
 
