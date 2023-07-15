@@ -29,11 +29,12 @@ module.exports = {
 			],
 			parserOptions: {
 				parser: '@typescript-eslint/parser',
-				project: 'tsconfig.json',
 				sourceType: 'module',
 			},
 			rules: {
 				'react/react-in-jsx-scope': 0,
+				'react/self-closing-comp': ['error', { component: true, html: true }],
+				'arrow-body-style': ['error', 'as-needed'],
 			},
 		},
 	],
