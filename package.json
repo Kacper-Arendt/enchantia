@@ -3,7 +3,7 @@
 	"scripts": {
 		"build": "turbo build",
 		"clean": "turbo clean",
-		"dev": "turbo dev --no-cache  --continue",
+		"dev": "turbo dev --no-cache  --continue --concurrency 11",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"lint": "turbo lint",
 		"test": "turbo test",
@@ -14,7 +14,7 @@
 		"eslint-config-custom": "workspace:*",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.3",
-		"prettier": "^2.8.7",
+		"prettier": "^3.0.0",
 		"turbo": "latest"
 	},
 	"packageManager": "pnpm@7.15.0",
