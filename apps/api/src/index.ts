@@ -1,7 +1,12 @@
-import { createServer } from './server';
+import { createServer } from 'src/server';
+
+// CONFIG
+import { envs } from 'src/config';
+
+// UTILS
 import { logger } from 'logger';
 
-const port = process.env.PORT || 5001;
+const port = envs.port || 5001;
 const server = createServer();
 
 server.listen(port, () => {

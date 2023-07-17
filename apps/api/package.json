@@ -11,17 +11,22 @@
 		"test": "jest --detectOpenHandles"
 	},
 	"jest": {
-		"preset": "jest-presets/jest/node"
+		"preset": "jest-presets/jest/node",
+		"rootDir": "./",
+		"modulePaths": [
+			"<rootDir>"
+		],
+		"testEnvironment": "node"
 	},
 	"dependencies": {
-		"body-parser": "^1.20.2",
 		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
 		"express": "^4.17.1",
+		"helmet": "^7.0.0",
 		"logger": "workspace:*",
 		"morgan": "^1.10.0"
 	},
 	"devDependencies": {
-		"@types/body-parser": "^1.19.0",
 		"@types/cors": "^2.8.10",
 		"@types/express": "^4.17.12",
 		"@types/jest": "^29.5.3",

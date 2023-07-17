@@ -1,22 +1,16 @@
-import supertest from "supertest";
-import { createServer } from "../server";
+import { ServerType, startServer } from 'src/testUtils/helpers';
 
-describe("server", () => {
-  it("health check returns 200", async () => {
-    await supertest(createServer())
-      .get("/healthz")
-      .expect(200)
-      .then((res) => {
-        expect(res.body.ok).toBe(true);
-      });
-  });
+describe('server', () => {
+	let request: ServerType;
 
-  it("message endpoint says hello", async () => {
-    await supertest(createServer())
-      .get("/message/jared")
-      .expect(200)
-      .then((res) => {
-        expect(res.body).toEqual({ message: "hello jared" });
-      });
-  });
+	beforeEach(async () => (request = await startServer()));
+
+	it('should return 404 on unknown endpoint', async () => {
+		request
+			.get('/xyv')
+			.expect(404)
+			.then((res) => {
+				expect(res.body.error).toBe('unknown endpoint');
+			});
+	});
 });

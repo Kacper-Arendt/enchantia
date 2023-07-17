@@ -1,13 +1,16 @@
 {
-  "name": "eslint-config-custom-server",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "main": "index.js",
-  "dependencies": {
-    "eslint-config-turbo": "^1.9.3"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "eslint-config-custom-server",
+	"version": "0.0.0",
+	"private": true,
+	"license": "MIT",
+	"main": "index.js",
+	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.1.0",
+		"@typescript-eslint/parser": "^6.1.0",
+		"eslint": "^8.45.0",
+		"eslint-config-turbo": "^1.9.3"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
