@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 
+// UTILS
 import { db } from 'src/utils';
 
 export const createUserByEmailAndPassword = (user: any) => {

@@ -1,3 +1,4 @@
+// UTILS
 import { db, hashToken } from 'src/utils';
 
 export const addRefreshTokenToWhitelist = ({ jti, refreshToken, userId }: any) =>

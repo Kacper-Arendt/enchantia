@@ -1,15 +1,17 @@
 import { Router } from 'express';
-
-import { v4 as uuidv4 } from 'uuid';
-
-import { generateTokens, hashToken, RefreshTokenPayload } from 'src/utils';
-import { addRefreshTokenToWhitelist, deleteRefreshToken, findRefreshTokenById, revokeTokens } from 'src/api/auth/auth.services';
-import { findUserByEmail, createUserByEmailAndPassword, findUserById } from 'src/api/users/users.services';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { envs } from 'src/config';
+import { v4 as uuidv4 } from 'uuid';
 
-// const jwt = require('jsonwebtoken');
+// UTILS
+import { generateTokens, hashToken, RefreshTokenPayload } from 'src/utils';
+
+// SERVICES
+import { addRefreshTokenToWhitelist, deleteRefreshToken, findRefreshTokenById, revokeTokens } from 'src/api/auth/auth.services';
+import { findUserByEmail, createUserByEmailAndPassword, findUserById } from 'src/api/users/users.services';
+
+// CONFIG
+import { envs } from 'src/config';
 
 export const authRouter = Router();
 

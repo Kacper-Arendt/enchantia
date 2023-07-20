@@ -1,5 +1,9 @@
 import jwt from 'jsonwebtoken';
+
+// CONFIG
 import { envs } from 'src/config';
+
+// MODELS
 import { User } from 'database';
 
 export interface AccessTokenPayload {
@@ -8,7 +12,8 @@ export interface AccessTokenPayload {
 
 export const generateAccessToken = (user: User) =>
 	jwt.sign({ userId: user.id } satisfies AccessTokenPayload, envs.jwtAccessSecret!, {
-		expiresIn: '5m',
+		// expiresIn: '5m',
+		expiresIn: '32h',
 	});
 
 export interface RefreshTokenPayload {
