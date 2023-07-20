@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import { errorHandler } from 'src/utils/errorHandler';
 
 // ROUTES
-import { routes } from 'src/routes';
+import { router } from 'src/api';
 
 export const createServer = () => {
 	const app = express();
@@ -19,7 +19,7 @@ export const createServer = () => {
 		.use(cors())
 		.use(express.urlencoded())
 		.use(express.json())
-		.use('/', routes)
+		.use('/api/v1', router)
 		.get('*', (req, res) => {
 			res.status(404).send({ error: 'unknown endpoint' });
 		})

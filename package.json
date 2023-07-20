@@ -3,7 +3,7 @@
 	"scripts": {
 		"build": "turbo build",
 		"clean": "turbo clean",
-		"dev": "turbo dev --no-cache  --continue --concurrency 11",
+		"dev": "dotenv -- turbo dev --no-cache  --continue --concurrency 20",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"lint": "turbo lint",
 		"test": "turbo test",
@@ -15,7 +15,8 @@
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.3",
 		"prettier": "^3.0.0",
-		"turbo": "latest"
+		"turbo": "latest",
+		"dotenv-cli": "^7.2.1"
 	},
 	"packageManager": "pnpm@7.15.0",
 	"lint-staged": {
