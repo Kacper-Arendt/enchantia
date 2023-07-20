@@ -1,6 +1,9 @@
 // UTILS
 import { db, hashToken } from 'src/utils';
 
+// MODELS
+import { User } from 'database';
+
 export const addRefreshTokenToWhitelist = ({ jti, refreshToken, userId }: any) =>
 	db.refreshToken.create({
 		data: {
@@ -28,6 +31,14 @@ export const deleteRefreshToken = (id: string) =>
 			revoked: true,
 		},
 	});
+
+export const deleteUsersRefreshTokens = (User: User) => {
+	db.refreshToken.deleteMany({
+		where: {
+			User,
+		},
+	});
+};
 
 export const revokeTokens = (userId: string) =>
 	db.refreshToken.updateMany({

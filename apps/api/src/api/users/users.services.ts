@@ -22,3 +22,10 @@ export const findUserByEmail = (email: string) =>
 			email,
 		},
 	});
+
+export const deleteUserById = (id: string) =>
+	db.user.delete({
+		where: {
+			id,
+		},
+	});
