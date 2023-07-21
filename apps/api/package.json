@@ -11,12 +11,22 @@
 		"test": "jest --detectOpenHandles"
 	},
 	"jest": {
-		"preset": "jest-presets/jest/node",
 		"rootDir": "./",
+		"roots": [
+			"<rootDir>/src"
+		],
 		"modulePaths": [
 			"<rootDir>"
 		],
-		"testEnvironment": "node"
+		"testEnvironment": "node",
+		"clearMocks": true,
+		"preset": "ts-jest",
+		"setupFilesAfterEnv": [
+			"<rootDir>/src/testUtils/singleton.ts"
+		],
+		"env": {
+			"jest/globals": true
+		}
 	},
 	"dependencies": {
 		"@types/express-serve-static-core": "^4.17.35",
@@ -26,6 +36,7 @@
 		"dotenv": "^16.3.1",
 		"express": "^4.17.1",
 		"helmet": "^7.0.0",
+		"jest-mock-extended": "^3.0.4",
 		"jsonwebtoken": "^9.0.1",
 		"logger": "workspace:*",
 		"morgan": "^1.10.0",

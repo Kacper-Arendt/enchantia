@@ -11,10 +11,10 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ['**/__tests__/**/*'],
-			env: {
-				jest: true,
-			},
+			files: ['**/*.test.ts'],
+			env: { 'jest/globals': true },
+			plugins: ['jest'],
+			extends: ['plugin:jest/recommended'],
 		},
 	],
 };

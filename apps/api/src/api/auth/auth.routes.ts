@@ -20,6 +20,8 @@ authRouter.post('/register', async (req, res, next) => {
 		const { email, password } = req.body;
 		if (!email || !password) return res.status(400).json({ message: 'You must provide an email and a password.' });
 
+		if (password.length < 5) return res.status(400).json({ message: 'Password must be at least 6 characters' });
+
 		const existingUser = await findUserByEmail(email);
 
 		if (existingUser) return res.status(400).json({ message: 'Email already in use.' });
@@ -50,7 +52,7 @@ authRouter.post('/login', async (req, res, next) => {
 
 		const validPassword = await bcrypt.compare(password, existingUser.password);
 
-		if (!validPassword) return res.status(403).json({ message: 'Invalid login credentials' });
+		if (!validPassword) return res.status(403).json({ message: 'Invalid login credentials.' });
 
 		const jti = uuidv4();
 		const { accessToken, refreshToken } = generateTokens(existingUser, jti);
