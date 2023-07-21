@@ -1,9 +1,7 @@
-import { ServerType, startServer } from 'src/testUtils/helpers';
+import { createMockUser, ServerType, startServer } from 'src/__testUtils__/helpers';
+import { deleteUserByEmail } from 'src/api/users/users.services';
 
-const newUser = {
-	email: 'enchantia41@enchantia.com',
-	password: 'testpassword',
-};
+const user = createMockUser();
 
 let refreshToken = '';
 let request: ServerType;
@@ -12,30 +10,34 @@ beforeAll(async () => {
 	request = await startServer();
 });
 
+afterAll(async () => {
+	await deleteUserByEmail(user.email);
+});
+
 describe('Register route', () => {
 	it('should return error with status 400 when there is no email', async () => {
-		const response = await request.post('/api/v1/auth/register').send({ password: newUser.password });
+		const response = await request.post('/api/v1/auth/register').send({ password: user.password });
 
 		expect(response.status).toBe(400);
 		expect(response.body).toHaveProperty('message', 'You must provide an email and a password.');
 	});
 
 	it('should return error with status 400 when there is no password', async () => {
-		const response = await request.post('/api/v1/auth/register').send({ email: newUser.email });
+		const response = await request.post('/api/v1/auth/register').send({ email: user.email });
 
 		expect(response.status).toBe(400);
 		expect(response.body).toHaveProperty('message', 'You must provide an email and a password.');
 	});
 
 	it('should return error with status 400 when password is to short', async () => {
-		const response = await request.post('/api/v1/auth/register').send({ email: newUser.email, password: '1234' });
+		const response = await request.post('/api/v1/auth/register').send({ email: user.email, password: '1234' });
 
 		expect(response.status).toBe(400);
 		expect(response.body).toHaveProperty('message', 'Password must be at least 6 characters');
 	});
 
 	it('should create new user and  return tokens', async () => {
-		const response = await request.post('/api/v1/auth/register').send(newUser);
+		const response = await request.post('/api/v1/auth/register').send({ email: user.email, password: user.password });
 
 		expect(response.status).toBe(200);
 		expect(response.body).toHaveProperty('accessToken');
@@ -45,14 +47,14 @@ describe('Register route', () => {
 
 describe('Login route', () => {
 	it('should return error with status 400 when there is no email', async () => {
-		const response = await request.post('/api/v1/auth/login').send({ password: newUser.password });
+		const response = await request.post('/api/v1/auth/login').send({ password: user.password });
 
 		expect(response.status).toBe(400);
 		expect(response.body).toHaveProperty('message', 'You must provide an email and a password.');
 	});
 
 	it('should return error with status 400 when there is no password', async () => {
-		const response = await request.post('/api/v1/auth/login').send({ email: newUser.email });
+		const response = await request.post('/api/v1/auth/login').send({ email: user.email });
 
 		expect(response.status).toBe(400);
 		expect(response.body).toHaveProperty('message', 'You must provide an email and a password.');
@@ -61,7 +63,7 @@ describe('Login route', () => {
 	it('should return error with status 400 when there are invalid credentials', async () => {
 		const response = await request.post('/api/v1/auth/login').send({
 			email: 'enchantiafake@enchantia.com',
-			password: newUser.password,
+			password: user.password,
 		});
 
 		expect(response.status).toBe(400);
@@ -70,7 +72,7 @@ describe('Login route', () => {
 
 	it('should return error with status 403 when there are invalid credentials', async () => {
 		const response = await request.post('/api/v1/auth/login').send({
-			email: newUser.email,
+			email: user.email,
 			password: 'wrong password',
 		});
 
@@ -79,7 +81,7 @@ describe('Login route', () => {
 	});
 
 	it('should log in an existing user and return access and refresh tokens', async () => {
-		const response = await request.post('/api/v1/auth/login').send(newUser);
+		const response = await request.post('/api/v1/auth/login').send({ email: user.email, password: user.password });
 
 		expect(response.status).toBe(200);
 		expect(response.body).toHaveProperty('accessToken');

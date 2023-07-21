@@ -22,10 +22,10 @@
 		"clearMocks": true,
 		"preset": "ts-jest",
 		"setupFilesAfterEnv": [
-			"<rootDir>/src/testUtils/singleton.ts"
+			"<rootDir>/src/__testUtils__/singleton.ts"
 		],
 		"env": {
-			"jest/globals": true
+			"jest": true
 		}
 	},
 	"dependencies": {

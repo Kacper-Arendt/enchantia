@@ -1,4 +1,4 @@
-import { ServerType, startServer } from 'src/testUtils/helpers';
+import { ServerType, startServer } from 'src/__testUtils__/helpers';
 
 let request: ServerType;
 

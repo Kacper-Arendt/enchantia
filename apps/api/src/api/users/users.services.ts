@@ -29,3 +29,10 @@ export const deleteUserById = (id: string) =>
 			id,
 		},
 	});
+
+export const deleteUserByEmail = (email: string) =>
+	db.user.delete({
+		where: {
+			email,
+		},
+	});
