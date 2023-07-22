@@ -33,7 +33,7 @@ describe('Register route', () => {
 		const response = await request.post('/api/v1/auth/register').send({ email: user.email, password: '1234' });
 
 		expect(response.status).toBe(400);
-		expect(response.body).toHaveProperty('message', 'Password must be at least 6 characters');
+		expect(response.body).toHaveProperty('message', 'Password must be at least 6 characters.');
 	});
 
 	it('should create new user and  return tokens', async () => {
