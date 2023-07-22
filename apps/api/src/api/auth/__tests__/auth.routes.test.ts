@@ -1,13 +1,13 @@
-import { createMockUser, ServerType, startServer } from 'src/__testUtils__/helpers';
+import { createMockUser, loginUserMock, ServerType, startServer } from 'src/__testUtils__/helpers';
 import { deleteUserByEmail } from 'src/api/users/users.services';
 
 const user = createMockUser();
 
-let refreshToken = '';
 let request: ServerType;
 
 beforeAll(async () => {
 	request = await startServer();
+	// await deleteUserByEmail(user.email);
 });
 
 afterAll(async () => {
@@ -86,8 +86,6 @@ describe('Login route', () => {
 		expect(response.status).toBe(200);
 		expect(response.body).toHaveProperty('accessToken');
 		expect(response.body).toHaveProperty('refreshToken');
-
-		refreshToken = response.body.refreshToken;
 	});
 });
 
@@ -100,6 +98,7 @@ describe('Refresh token route', () => {
 	});
 
 	it('should refresh tokens and return new access with refresh tokens', async () => {
+		const { refreshToken } = await loginUserMock();
 		const response = await request.post('/api/v1/auth/refreshToken').send({ refreshToken });
 
 		expect(response.status).toBe(200);
