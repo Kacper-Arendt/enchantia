@@ -13,6 +13,12 @@ import { findUserByEmail, createUserByEmailAndPassword, findUserById } from 'src
 // CONFIG
 import { envs } from 'src/config';
 
+export interface AuthSuccessInterfaces {
+	accessToken: string;
+	refreshToken: string;
+	id: string;
+}
+
 export const register = async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { email, password } = req.body;
@@ -29,10 +35,13 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 		const { accessToken, refreshToken } = generateTokens(user, jti);
 		await addRefreshTokenToWhitelist({ jti, refreshToken, userId: user.id });
 
-		res.json({
+		const json: AuthSuccessInterfaces = {
 			accessToken,
 			refreshToken,
-		});
+			id: user.id,
+		};
+
+		res.json(json);
 	} catch (err) {
 		next(err);
 	}
@@ -56,10 +65,13 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 		const { accessToken, refreshToken } = generateTokens(existingUser, jti);
 		await addRefreshTokenToWhitelist({ jti, refreshToken, userId: existingUser.id });
 
-		res.json({
+		const json: AuthSuccessInterfaces = {
 			accessToken,
 			refreshToken,
-		});
+			id: existingUser.id,
+		};
+
+		res.json(json);
 	} catch (err) {
 		next(err);
 	}

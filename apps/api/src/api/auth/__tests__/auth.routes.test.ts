@@ -42,6 +42,7 @@ describe('Register route', () => {
 		expect(response.status).toBe(200);
 		expect(response.body).toHaveProperty('accessToken');
 		expect(response.body).toHaveProperty('refreshToken');
+		expect(response.body).toHaveProperty('id');
 	});
 });
 
@@ -86,6 +87,7 @@ describe('Login route', () => {
 		expect(response.status).toBe(200);
 		expect(response.body).toHaveProperty('accessToken');
 		expect(response.body).toHaveProperty('refreshToken');
+		expect(response.body).toHaveProperty('id');
 	});
 });
 
