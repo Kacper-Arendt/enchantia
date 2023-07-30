@@ -10,13 +10,15 @@
 		"lint": "tsc --noEmit && eslint \"src/**/*.ts*\""
 	},
 	"dependencies": {
+		"@tanstack/router": "0.0.1-beta.119",
 		"i18next": "^23.2.11",
 		"i18next-browser-languagedetector": "^7.1.0",
 		"internationalization": "workspace:^",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-i18next": "^13.0.2",
-		"ui": "workspace:*"
+		"ui": "workspace:*",
+		"utils": "^0.3.1"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.0",

@@ -71,5 +71,8 @@
 		"success": "Success",
 		"error": "Error",
 		"loading": "Loading"
+	},
+	"routes": {
+		"register": "Register"
 	}
 }
