@@ -1,0 +1,25 @@
+/* ==================== */
+/* --> START Label <-- */
+/* ==================== */
+.label {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6rem;
+
+    font-size: 1rem;
+    color: white;
+    font-weight: var(--font-weight-medium);
+}
+
+/* --> END Label  <-- */
+
+/* ==================== */
+/* --> START FieldError <-- */
+/* ==================== */
+.fieldError {
+    color: var(--danger);
+    font-size: 0.8rem;
+}
+
+/* --> END FieldError  <-- */
+

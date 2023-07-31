@@ -35,6 +35,7 @@ module.exports = {
 				'react/react-in-jsx-scope': 0,
 				'react/self-closing-comp': ['error', { component: true, html: true }],
 				'arrow-body-style': ['error', 'as-needed'],
+				'@typescript-eslint/no-explicit-any': 0,
 			},
 		},
 	],

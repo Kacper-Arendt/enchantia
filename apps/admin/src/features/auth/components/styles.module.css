@@ -19,7 +19,7 @@
 /* ==================== */
 /* --> START Register <-- */
 /* ==================== */
-.registerForm {
+.registerFormWrapper {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -30,6 +30,14 @@
     border: 1px solid var(--grey60);
     border-radius: var(--border3);
     background-color: var(--grey40);
+}
+
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
 }
 
 /* --> END Register <-- */

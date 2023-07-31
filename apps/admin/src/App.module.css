@@ -30,6 +30,11 @@
     --desktop-breakpoint: 1024px;
     --desktop--large-breakpoint: 1404px;
 
+    /* font weights */
+    --font-weight-bold: 700;
+    --font-weight-semi-bold: 600;
+    --font-weight-medium: 500;
+    --font-weight-regular: 400;
 
     /* z-index */
     --z-index1: 10;
