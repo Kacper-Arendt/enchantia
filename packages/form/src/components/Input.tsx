@@ -2,10 +2,13 @@ import { Control, Controller } from 'react-hook-form';
 import { useState } from 'react';
 import { InputOwnerState } from '@mui/base/Input/Input.types';
 import { Input as MuiInput } from '@mui/base';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 // COMPONENTS
 import { Label } from '../common';
-import { Button } from 'ui';
+
+// STYLES
+import styles from './styles.module.css';
 
 interface InputInterface {
 	name: string;
@@ -28,7 +31,7 @@ export const Input = ({ label, type, placeholder, autoFocus, disabled, name, con
 			render={({ field: { value, onChange, onBlur, ref }, fieldState: { error } }) => (
 				<>
 					<Label label={label} error={error}>
-						<div>
+						<div className={styles.inputWrapper}>
 							<MuiInput
 								name={name}
 								required
@@ -41,11 +44,14 @@ export const Input = ({ label, type, placeholder, autoFocus, disabled, name, con
 								placeholder={placeholder}
 								autoFocus={autoFocus}
 								disabled={disabled}
+								slotProps={{
+									input: { className: styles.input },
+								}}
 							/>
 							{type === 'password' && (
-								<Button type="button" onClick={() => setIsVisible(!isVisible)}>
-									X
-								</Button>
+								<button type="button" onClick={() => setIsVisible(!isVisible)} className={styles.togglePasswordBtn}>
+									{isVisible ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+								</button>
 							)}
 						</div>
 					</Label>

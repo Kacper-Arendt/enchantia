@@ -7,6 +7,7 @@ import { useTranslatedLang } from './useTranslatedLang';
 // COMPONENTS
 
 // STYLES
+import styles from './styles.module.css';
 
 // LANGS
 import { supportedI18nLangs } from 'internationalization';
@@ -30,7 +31,7 @@ export const LangSelect = ({ defaultValue, onChange, wrapperClassName }: LangSel
 		<div className={wrapperClassName}>
 			<Select defaultValue={defaultValue} onChange={(_, newValue) => onChange(newValue)}>
 				{langs.map((lang) => (
-					<Option key={lang} value={lang}>
+					<Option key={lang} value={lang} className={styles.option}>
 						<img
 							src={`https://flagcdn.com/w20/${flagHandler(lang).toLowerCase()}.png`}
 							srcSet={`https://flagcdn.com/w40/${flagHandler(lang).toLowerCase()}.png 2x`}

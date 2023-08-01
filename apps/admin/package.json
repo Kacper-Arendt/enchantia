@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@tanstack/router": "0.0.1-beta.119",
+		"clsx": "^2.0.0",
 		"form": "workspace:*",
 		"i18next": "^23.2.11",
 		"i18next-browser-languagedetector": "^7.1.0",

@@ -1,4 +1,7 @@
 import MuiButton, { ButtonProps } from '@mui/base/Button';
+import { LuLoader } from 'react-icons/lu';
+
+import styles from './styles.module.css';
 
 interface ButtonInterface extends ButtonProps {
 	variant?: 'outlined' | 'contained' | 'text';
@@ -6,11 +9,14 @@ interface ButtonInterface extends ButtonProps {
 	loading?: boolean;
 }
 
-// TODO add styles
 export const Button = ({ children, loading, ...rest }: ButtonInterface) => (
-	<MuiButton {...rest}>
+	<MuiButton
+		{...rest}
+		slotProps={{
+			root: { className: styles.button },
+		}}
+	>
 		{children}
-		{/*TODO add icon*/}
-		{loading && '...'}
+		{loading && <LuLoader />}
 	</MuiButton>
 );

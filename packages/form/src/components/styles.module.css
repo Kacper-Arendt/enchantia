@@ -1,0 +1,29 @@
+/* ==================== */
+/* --> START input <-- */
+/* ==================== */
+.inputWrapper {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    background-color: var(--grey10);
+    border-radius: var(--border3);
+    padding: 0.5rem 0.3rem;
+    border: 0;
+    font-size: 1rem;
+}
+
+
+.togglePasswordBtn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    border: 0;
+    font-size: 1.5rem;
+
+}
+
+/* --> END Inputed <-- */

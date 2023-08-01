@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { FieldValues, FormProvider, SubmitHandler, UseFormReturn } from 'react-hook-form';
 
-export interface FormProps<T extends FieldValues = unknown> extends Omit<ComponentProps<'form'>, 'onSubmit'> {
+export interface FormProps<T extends FieldValues = any> extends Omit<ComponentProps<'form'>, 'onSubmit'> {
 	form: UseFormReturn<T>;
 	onSubmit: SubmitHandler<T>;
 }

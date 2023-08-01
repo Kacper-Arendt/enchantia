@@ -3,8 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 // HOOKS
 
-// MODELS
-
 // COMPONENTS
 import { Button } from 'ui';
 import { Form, Input, useForm } from 'form';
@@ -30,7 +28,9 @@ export const RegisterForm = () => {
 			<Form form={form} onSubmit={(item) => console.log(item)} className={styles.registerForm}>
 				<Input name="email" type="email" control={form.control} />
 				<Input name="password" type="password" control={form.control} />
-				<Button type="submit">Submit</Button>
+				<Button type="submit" loading={false}>
+					{t('general.submit')}
+				</Button>
 			</Form>
 		</div>
 	);

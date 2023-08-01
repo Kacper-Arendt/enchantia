@@ -71,6 +71,9 @@
     margin: 0;
 }
 
+button {
+    cursor: pointer;
+}
 
 img, picture, video, canvas, svg {
     display: block;
