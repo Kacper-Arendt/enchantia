@@ -24,10 +24,10 @@ export const RegisterForm = () => {
 
 	return (
 		<div className={styles.registerFormWrapper}>
-			<h1>{t('routes.register')}</h1>
+			<h1 className={styles.formHeading}>{t('routes.register')}</h1>
 			<Form form={form} onSubmit={(item) => console.log(item)} className={styles.registerForm}>
-				<Input name="email" type="email" control={form.control} />
-				<Input name="password" type="password" control={form.control} />
+				<Input name="email" type="email" control={form.control} label={t('general.email')} />
+				<Input name="password" type="password" control={form.control} label={t('general.password')} />
 				<Button type="submit" loading={false}>
 					{t('general.submit')}
 				</Button>

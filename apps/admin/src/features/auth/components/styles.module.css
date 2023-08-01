@@ -29,8 +29,12 @@
     padding: 1rem;
     border: 1px solid var(--grey60);
     border-radius: var(--border3);
-    background-color: var(--grey40);
+    background-color: var(--grey100);
     width: 20rem;
+}
+
+.formHeading {
+    color: var(--grey10);
 }
 
 
