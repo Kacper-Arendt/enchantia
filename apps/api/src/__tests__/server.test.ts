@@ -1,16 +1,14 @@
-import { ServerType, startServer } from 'src/testUtils/helpers';
+import { ServerType, startServer } from 'src/__testUtils__/helpers';
+
+let request: ServerType;
+
+beforeEach(async () => (request = await startServer()));
 
 describe('server', () => {
-	let request: ServerType;
+	it('Returns 400 when endpoint is invalid', async () => {
+		const response = await request.get('/api');
 
-	beforeEach(async () => (request = await startServer()));
-
-	it('should return 404 on unknown endpoint', async () => {
-		request
-			.get('/xyv')
-			.expect(404)
-			.then((res) => {
-				expect(res.body.error).toBe('unknown endpoint');
-			});
+		expect(response.status).toBe(404);
+		expect(response.body).toHaveProperty('error', 'unknown endpoint');
 	});
 });

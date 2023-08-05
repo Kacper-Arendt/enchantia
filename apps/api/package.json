@@ -5,35 +5,51 @@
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs",
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-		"dev": "tsup src/index.ts --format cjs --watch --onSuccess \"node dist/index.js\"",
+		"dev": "tsx watch src/index.ts",
 		"lint": "tsc --noEmit && eslint \"src/**/*.ts*\"",
 		"start": "node dist/index.js",
 		"test": "jest --detectOpenHandles"
 	},
 	"jest": {
-		"preset": "jest-presets/jest/node",
 		"rootDir": "./",
+		"roots": [
+			"<rootDir>/src"
+		],
 		"modulePaths": [
 			"<rootDir>"
 		],
-		"testEnvironment": "node"
+		"testEnvironment": "node",
+		"clearMocks": true,
+		"preset": "ts-jest",
+		"setupFilesAfterEnv": [
+			"<rootDir>/src/__testUtils__/singleton.ts"
+		]
 	},
 	"dependencies": {
 		"@types/express-serve-static-core": "^4.17.35",
+		"bcrypt": "^5.1.0",
 		"cors": "^2.8.5",
+		"database": "workspace:*",
 		"dotenv": "^16.3.1",
 		"express": "^4.17.1",
 		"helmet": "^7.0.0",
+		"jest-mock-extended": "^3.0.4",
+		"jsonwebtoken": "^9.0.1",
 		"logger": "workspace:*",
-		"morgan": "^1.10.0"
+		"morgan": "^1.10.0",
+		"uuid": "^9.0.0"
 	},
 	"devDependencies": {
+		"@jest-mock/express": "^2.0.2",
+		"@types/bcrypt": "^5.0.0",
 		"@types/cors": "^2.8.10",
 		"@types/express": "^4.17.12",
 		"@types/jest": "^29.5.3",
+		"@types/jsonwebtoken": "^9.0.2",
 		"@types/morgan": "^1.9.2",
 		"@types/node": "^20.4.2",
 		"@types/supertest": "^2.0.12",
+		"@types/uuid": "^9.0.2",
 		"eslint": "^8.45.0",
 		"eslint-config-custom-server": "workspace:*",
 		"jest": "^29.6.1",
@@ -42,6 +58,7 @@
 		"ts-jest": "^29.1.1",
 		"tsconfig": "workspace:*",
 		"tsup": "^7.1.0",
+		"tsx": "^3.7.1",
 		"typescript": "^5.1.6"
 	}
 }
