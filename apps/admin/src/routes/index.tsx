@@ -3,6 +3,7 @@ import { RouterProvider, Router, Route, RootRoute } from '@tanstack/router';
 // COMPONENTS
 import { PrivateLayout } from 'src/components/layouts';
 import { Register } from 'src/features/auth';
+import { Dashboard } from 'src/features/misc';
 
 const rootRoute = new RootRoute();
 
@@ -20,9 +21,11 @@ const RegisterRoute = new Route({ getParentRoute: () => authRoutes, path: 'regis
 // ====================
 
 const privateRoutes = new Route({ getParentRoute: () => rootRoute, path: '/', component: PrivateLayout });
+const DashboardRoute = new Route({ getParentRoute: () => privateRoutes, path: '/dashboard', component: Dashboard });
+
 // --> END Private Routes  <--
 
-const routeTree = rootRoute.addChildren([authRoutes.addChildren([RegisterRoute]), privateRoutes]);
+const routeTree = rootRoute.addChildren([authRoutes.addChildren([RegisterRoute]), privateRoutes.addChildren([DashboardRoute])]);
 
 const router = new Router({ routeTree });
 

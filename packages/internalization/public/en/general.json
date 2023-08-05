@@ -32,6 +32,7 @@
 		"security": "Security",
 		"authentication": "Authentication",
 		"authorization": "Authorization",
+		"notAuthenticated": "You are not authenticated",
 		"privacy": "Privacy",
 		"restore": "Restore",
 		"errors": "Errors",

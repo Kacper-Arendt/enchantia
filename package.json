@@ -3,7 +3,7 @@
 	"scripts": {
 		"build": "turbo build",
 		"clean": "turbo clean",
-		"dev": "dotenv -- turbo dev --no-cache  --continue --concurrency 13",
+		"dev": "dotenv -- turbo dev --no-cache --concurrency 14",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"lint": "turbo lint",
 		"test": "turbo test",

@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs",
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-		"dev": "tsup src/index.ts --format cjs --watch --onSuccess \"node dist/index.js\"",
+		"dev": "tsx watch src/index.ts",
 		"lint": "tsc --noEmit && eslint \"src/**/*.ts*\"",
 		"start": "node dist/index.js",
 		"test": "jest --detectOpenHandles"
@@ -58,6 +58,7 @@
 		"ts-jest": "^29.1.1",
 		"tsconfig": "workspace:*",
 		"tsup": "^7.1.0",
+		"tsx": "^3.7.1",
 		"typescript": "^5.1.6"
 	}
 }

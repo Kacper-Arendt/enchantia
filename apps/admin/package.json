@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@tanstack/router": "0.0.1-beta.119",
+		"axios": "^1.4.0",
 		"clsx": "^2.0.0",
 		"form": "workspace:*",
 		"i18next": "^23.2.11",
@@ -19,6 +20,7 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-i18next": "^13.0.2",
+		"react-toastify": "^9.1.3",
 		"ui": "workspace:*",
 		"utils": "^0.3.1",
 		"zod": "^3.20.6"

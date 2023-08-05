@@ -32,6 +32,7 @@
 		"security": "Bezpieczeństwo",
 		"authentication": "Uwierzytelnianie",
 		"authorization": "Autoryzacja",
+		"notAuthenticated": "Nie jesteś zalogowany",
 		"privacy": "Prywatność",
 		"restore": "Przywróć",
 		"errors": "Błędy",

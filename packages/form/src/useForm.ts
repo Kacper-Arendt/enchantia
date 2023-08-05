@@ -1,14 +1,12 @@
-import { TypeOf, ZodSchema } from 'zod';
-import { useForm as useHookForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { UseFormProps as UseHookFormProps } from 'react-hook-form/dist/types/form';
+import { useForm as useHookForm, UseFormProps as UseHookFormProps } from 'react-hook-form';
+import { ZodSchema, TypeOf } from 'zod';
 
 interface UseFormProps<T extends ZodSchema<any>> extends UseHookFormProps<TypeOf<T>> {
 	schema: T;
 }
 
-export const useForm = <T extends ZodSchema<unknown>>({ schema, ...formConfig }: UseFormProps<T>) =>
-	useHookForm({
+export const useForm = <T extends ZodSchema<any>>({ schema, ...formConfig }: UseFormProps<T>) => useHookForm({
 		...formConfig,
 		resolver: zodResolver(schema),
 	});

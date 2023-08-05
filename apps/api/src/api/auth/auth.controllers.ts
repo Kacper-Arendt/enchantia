@@ -41,7 +41,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 			id: user.id,
 		};
 
-		res.json(json);
+		await res.json(json);
 	} catch (err) {
 		next(err);
 	}
