@@ -7,22 +7,18 @@ import { RegisterCredentialsInterface, registerWithEmailAndPassword } from 'src/
 // MODELS
 import { AuthResponseInterface } from 'src/features/auth/models';
 
-export const useAuth = () => {
-	const navigate = useNavigate();
+// STORE
+import { useAppStore } from 'src/store';
 
-	const storage = {
-		clearAccessToken: () => localStorage.removeItem('accessToken'),
-		clearRefreshToken: () => localStorage.removeItem('refreshToken'),
-		getAccessToken: () => localStorage.getItem('accessToken'),
-		getRefreshToken: () => localStorage.getItem('refreshToken'),
-		setAccessToken: (accessToken: string) => localStorage.setItem('accessToken', accessToken),
-		setRefreshToken: (refreshToken: string) => localStorage.setItem('refreshToken', refreshToken),
-	};
+export const useAuth = () => {
+	const { accessToken, addAccessToken, clearAccessToken, clearRefreshToken, addRefreshToken } = useAppStore((state) => state);
+
+	const navigate = useNavigate();
 
 	const handleUserResponse = async (data: AuthResponseInterface) => {
 		const { accessToken, refreshToken } = data;
-		storage.setAccessToken(accessToken);
-		storage.setRefreshToken(refreshToken);
+		addAccessToken(accessToken);
+		addRefreshToken(refreshToken);
 	};
 
 	const register = async (data: RegisterCredentialsInterface, onFinish: () => void) => {
@@ -36,16 +32,12 @@ export const useAuth = () => {
 	};
 
 	const logout = () => {
-		storage.clearAccessToken();
-		storage.clearRefreshToken();
+		clearAccessToken();
+		clearRefreshToken();
 		navigate({ to: '/auth/register' });
 	};
 
-	const checkIsAuthenticated = () => {
-		const token = storage.getAccessToken();
-
-		return Boolean(token);
-	};
+	const checkIsAuthenticated = () => Boolean(accessToken);
 
 	return { register, logout, checkIsAuthenticated };
 };
