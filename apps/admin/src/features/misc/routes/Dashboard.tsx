@@ -2,7 +2,7 @@
 import { useAuth } from 'src/features/auth/hooks/useAuth';
 
 // COMPONENTS
-import { Button } from 'ui';
+import { Button } from 'src/ui';
 
 export const Dashboard = () => {
 	const { logout } = useAuth();

@@ -9,7 +9,7 @@ import { deleteUsersRefreshTokens } from 'src/api/auth/auth.services';
 import { userDto } from 'src/api/users/user.dto';
 
 // HELPERS
-import { logger } from 'logger';
+import { logger } from 'src/utils';
 
 export const getProfile = async (req: Request, res: Response, next: NextFunction) => {
 	try {
