@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from 'src/features/auth/hooks/useAuth';
 
 // COMPONENTS
-import { Button } from 'ui';
-import { Form, Input, useForm } from 'form';
+import { Button } from 'src/ui';
+import { Form, Input, useForm } from 'src/components/form';
 
 // STYLES
 import styles from 'src/features/auth/components/styles.module.css';

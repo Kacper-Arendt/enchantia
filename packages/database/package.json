@@ -20,7 +20,6 @@
 		"dev": "tsup --watch",
 		"format": "prisma format",
 		"generate": "prisma generate",
-		"lint": "eslint \"src/**/*.ts\"",
 		"studio": "prisma studio"
 	},
 	"dependencies": {
@@ -28,11 +27,9 @@
 	},
 	"devDependencies": {
 		"@types/node": "^18.11.17",
-		"eslint": "^7.32.0",
-		"eslint-config-custom": "workspace*",
 		"prisma": "^4.14.1",
 		"rimraf": "^3.0.2",
-		"tsconfig": "workspace*",
+		"tsconfig": "workspace:*",
 		"tsup": "^6.1.3",
 		"tsx": "^3.7.1",
 		"typescript": "^4.9.4"

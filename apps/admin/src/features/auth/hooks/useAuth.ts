@@ -15,10 +15,9 @@ export const useAuth = () => {
 
 	const navigate = useNavigate();
 
-	const handleUserResponse = async (data: AuthResponseInterface) => {
-		const { accessToken, refreshToken } = data;
-		addAccessToken(accessToken);
-		addRefreshToken(refreshToken);
+	const handleUserResponse = (data: AuthResponseInterface) => {
+		addAccessToken(data.accessToken);
+		addRefreshToken(data.refreshToken);
 	};
 
 	const register = async (data: RegisterCredentialsInterface, onFinish: () => void) => {

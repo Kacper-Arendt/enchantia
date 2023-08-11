@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 // CONFIG
-import { initializeI18n } from 'internationalization';
+import { initializeI18n } from 'src/lib/i18nconfig';
 
 // COMPONENTS
 import { Toasts } from 'src/components/notifications';
