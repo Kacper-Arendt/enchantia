@@ -6,7 +6,7 @@ import { RouterProvider, Router, Route, RootRoute, redirect } from '@tanstack/ro
 import { useAppStore } from 'src/store';
 
 // COMPONENTS
-import { Register } from 'src/features/auth';
+import { Login, Register } from 'src/features/auth';
 import { Dashboard } from 'src/features/misc';
 import { PrivateLayout } from 'src/components/layouts';
 
@@ -43,6 +43,12 @@ const RegisterRoute = new Route({
 	component: () => <Register navigateOnSuccess />,
 });
 
+const LoginRoute = new Route({
+	getParentRoute: () => authRoutes,
+	path: 'login',
+	component: () => <Login navigateOnSuccess />,
+});
+
 // --> END Auth Routes <--
 
 // ====================
@@ -54,7 +60,7 @@ const privateRoutes = new Route({
 	id: 'private',
 	component: () => {
 		const { accessToken } = useAppStore.getState();
-		if (!accessToken) return <Register navigateOnSuccess={false} />;
+		if (!accessToken) return <Login navigateOnSuccess={false} />;
 		return <PrivateLayout />;
 	},
 });
@@ -63,7 +69,7 @@ const DashboardRoute = new Route({ getParentRoute: () => privateRoutes, path: '/
 // --> END Private Routes  <--
 
 const routeTree = rootRoute.addChildren([
-	authRoutes.addChildren([RegisterRoute]),
+	authRoutes.addChildren([RegisterRoute, LoginRoute]),
 	privateRoutes.addChildren([DashboardRoute]),
 	nonMatchingRoute,
 ]);
