@@ -34,6 +34,7 @@
     "authorization": "Authorization",
     "notAuthenticated": "You are not authenticated",
     "alreadyRegistered": "Already have an account?",
+    "needAccount": "Need an account?",
     "privacy": "Privacy",
     "restore": "Restore",
     "errors": "Errors",
@@ -75,6 +76,7 @@
     "loading": "Loading"
   },
   "routes": {
-    "register": "Register"
+    "register": "Register",
+    "login": "Login"
   }
 }

@@ -30,6 +30,14 @@ export const useAuth = () => {
 		}
 	};
 
+	const login = async (data: any, onFinish?: () => void) => {
+		try {
+			if (onFinish) onFinish();
+		} catch (e: any) {
+			toast.error(e.response.data.message);
+		}
+	};
+
 	const logout = () => {
 		clearAccessToken();
 		clearRefreshToken();
@@ -38,5 +46,5 @@ export const useAuth = () => {
 
 	const checkIsAuthenticated = () => Boolean(accessToken);
 
-	return { register, logout, checkIsAuthenticated };
+	return { register, logout, checkIsAuthenticated, login };
 };

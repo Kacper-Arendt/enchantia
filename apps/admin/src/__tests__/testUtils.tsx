@@ -24,5 +24,6 @@ const customRender = (ui: JSX.Element): RenderResult => {
 };
 
 export * from '@testing-library/react';
+
 export type { IExtendedRenderOptions };
 export { customRender };

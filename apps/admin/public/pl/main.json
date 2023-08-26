@@ -34,6 +34,7 @@
     "authorization": "Autoryzacja",
     "notAuthenticated": "Nie jesteś zalogowany",
     "alreadyRegistered": "Posiadasz już konto?",
+    "needAccount": "Potrzebujesz konto?",
     "privacy": "Prywatność",
     "restore": "Przywróć",
     "errors": "Błędy",
@@ -64,7 +65,7 @@
     "cancel": "Anuluj",
     "back": "Powrót",
     "next": "Dalej",
-    "submit": "Wyślij",
+    "submit": "Zatwierdź",
     "close": "Zamknij",
     "yes": "Tak",
     "no": "Nie",
@@ -75,6 +76,7 @@
     "loading": "Ładowanie"
   },
   "routes": {
-    "register": "Rejestracja"
+    "register": "Rejestracja",
+    "login": "Logowanie"
   }
 }
