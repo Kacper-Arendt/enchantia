@@ -21,8 +21,8 @@ export interface AuthSuccessInterfaces {
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const { email, password } = req.body;
-		if (!email || !password) return res.status(400).json({ message: 'You must provide an email and a password.' });
+		const { email, password, name } = req.body;
+		if (!email || !password || name) return res.status(400).json({ message: 'You must provide an email, password, and name' });
 
 		if (password.length < 6) return res.status(400).json({ message: 'Password must be at least 6 characters.' });
 
@@ -30,7 +30,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 
 		if (existingUser) return res.status(400).json({ message: 'Email already in use.' });
 
-		const user = await createUserByEmailAndPassword({ email, password });
+		const user = await createUserByEmailAndPassword({ email, password, name });
 		const jti = uuidv4();
 		const { accessToken, refreshToken } = generateTokens(user, jti);
 		await addRefreshTokenToWhitelist({ jti, refreshToken, userId: user.id });
