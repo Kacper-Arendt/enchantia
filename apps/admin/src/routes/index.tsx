@@ -58,10 +58,17 @@ const LoginRoute = new Route({
 const privateRoutes = new Route({
 	getParentRoute: () => rootRoute,
 	id: 'private',
-	component: () => {
+	component: () => <PrivateLayout />,
+	beforeLoad: async () => {
 		const { accessToken } = useAppStore.getState();
-		if (!accessToken) return <Login navigateOnSuccess={false} />;
-		return <PrivateLayout />;
+		if (!accessToken)
+			throw redirect({
+				to: '/auth/login',
+				search: {
+					// eslint-disable-next-line @typescript-eslint/no-use-before-define
+					redirect: router.state.location.href,
+				},
+			});
 	},
 });
 const DashboardRoute = new Route({ getParentRoute: () => privateRoutes, path: '/', component: Dashboard });

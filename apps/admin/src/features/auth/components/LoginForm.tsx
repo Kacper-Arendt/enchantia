@@ -36,7 +36,7 @@ export const LoginForm = ({ onFinish }: { onFinish?: () => void }) => {
 				</Button>
 			</Form>
 
-			<AuthLink to="auth/register" text={t('general.needAccount')} />
+			<AuthLink to="/auth/register" text={t('general.needAccount')} />
 		</div>
 	);
 };

@@ -38,7 +38,7 @@ export const RegisterForm = ({ onFinish }: { onFinish?: () => void }) => {
 				</Button>
 			</Form>
 
-			<AuthLink to="auth/login" text={t('general.alreadyRegistered')} />
+			<AuthLink to="/auth/login" text={t('general.alreadyRegistered')} />
 		</div>
 	);
 };

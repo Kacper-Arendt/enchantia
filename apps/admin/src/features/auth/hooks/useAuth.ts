@@ -2,7 +2,12 @@ import { toast } from 'react-toastify';
 import { useNavigate } from '@tanstack/router';
 
 // API
-import { RegisterCredentialsInterface, registerWithEmailAndPassword } from 'src/features/auth/api/register';
+import {
+	loginWithEmailAndPassword,
+	LoginCredentialsInterface,
+	RegisterCredentialsInterface,
+	registerWithEmailAndPassword,
+} from 'src/features/auth/api';
 
 // MODELS
 import { AuthResponseInterface } from 'src/features/auth/models';
@@ -30,8 +35,10 @@ export const useAuth = () => {
 		}
 	};
 
-	const login = async (data: any, onFinish?: () => void) => {
+	const login = async (data: LoginCredentialsInterface, onFinish?: () => void) => {
 		try {
+			const response = await loginWithEmailAndPassword(data);
+			await handleUserResponse(response);
 			if (onFinish) onFinish();
 		} catch (e: any) {
 			toast.error(e.response.data.message);
