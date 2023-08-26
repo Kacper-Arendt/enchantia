@@ -1,18 +1,47 @@
-import { RouterProvider, Router, Route, RootRoute } from '@tanstack/router';
+/* eslint-disable @typescript-eslint/no-throw-literal */
+
+import { RouterProvider, Router, Route, RootRoute, redirect } from '@tanstack/router';
+
+// STORE
+import { useAppStore } from 'src/store';
 
 // COMPONENTS
-import { PrivateLayout } from 'src/components/layouts';
 import { Register } from 'src/features/auth';
 import { Dashboard } from 'src/features/misc';
+import { PrivateLayout } from 'src/components/layouts';
 
 const rootRoute = new RootRoute();
+
+const nonMatchingRoute = new Route({
+	getParentRoute: () => rootRoute,
+	path: '*',
+	beforeLoad: async () => {
+		throw redirect({
+			to: '/',
+		});
+	},
+});
 
 // ====================
 // --> START Auth Routes <--
 // ====================
-const authRoutes = new Route({ getParentRoute: () => rootRoute, path: '/auth' });
+const authRoutes = new Route({
+	getParentRoute: () => rootRoute,
+	path: '/auth',
+	beforeLoad: async () => {
+		const { accessToken } = useAppStore.getState();
+		if (accessToken)
+			throw redirect({
+				to: '/',
+			});
+	},
+});
 
-const RegisterRoute = new Route({ getParentRoute: () => authRoutes, path: 'register', component: Register });
+const RegisterRoute = new Route({
+	getParentRoute: () => authRoutes,
+	path: 'register',
+	component: () => <Register navigateOnSuccess />,
+});
 
 // --> END Auth Routes <--
 
@@ -20,14 +49,26 @@ const RegisterRoute = new Route({ getParentRoute: () => authRoutes, path: 'regis
 // --> START Private Routes <--
 // ====================
 
-const privateRoutes = new Route({ getParentRoute: () => rootRoute, path: '/', component: PrivateLayout });
-const DashboardRoute = new Route({ getParentRoute: () => privateRoutes, path: '/dashboard', component: Dashboard });
+const privateRoutes = new Route({
+	getParentRoute: () => rootRoute,
+	id: 'private',
+	component: () => {
+		const { accessToken } = useAppStore.getState();
+		if (!accessToken) return <Register navigateOnSuccess={false} />;
+		return <PrivateLayout />;
+	},
+});
+const DashboardRoute = new Route({ getParentRoute: () => privateRoutes, path: '/', component: Dashboard });
 
 // --> END Private Routes  <--
 
-const routeTree = rootRoute.addChildren([authRoutes.addChildren([RegisterRoute]), privateRoutes.addChildren([DashboardRoute])]);
+const routeTree = rootRoute.addChildren([
+	authRoutes.addChildren([RegisterRoute]),
+	privateRoutes.addChildren([DashboardRoute]),
+	nonMatchingRoute,
+]);
 
-const router = new Router({ routeTree });
+export const router = new Router({ routeTree });
 
 export const Routes = () => <RouterProvider router={router} />;
 

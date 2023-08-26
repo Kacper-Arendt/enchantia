@@ -16,15 +16,15 @@ export const useAuth = () => {
 	const navigate = useNavigate();
 
 	const handleUserResponse = (data: AuthResponseInterface) => {
-		addAccessToken(data.accessToken);
-		addRefreshToken(data.refreshToken);
+		addAccessToken(data?.accessToken);
+		addRefreshToken(data?.refreshToken);
 	};
 
-	const register = async (data: RegisterCredentialsInterface, onFinish: () => void) => {
+	const register = async (data: RegisterCredentialsInterface, onFinish?: () => void) => {
 		try {
 			const response = await registerWithEmailAndPassword(data);
 			await handleUserResponse(response);
-			onFinish();
+			if (onFinish) onFinish();
 		} catch (e: any) {
 			toast.error(e.response.data.message);
 		}

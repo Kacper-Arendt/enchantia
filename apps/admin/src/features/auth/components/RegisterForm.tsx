@@ -17,7 +17,7 @@ const signUpFormSchema = z.object({
 	password: z.string().min(6).max(126),
 });
 
-export const RegisterForm = ({ onFinish }: { onFinish: () => void }) => {
+export const RegisterForm = ({ onFinish }: { onFinish?: () => void }) => {
 	const { t } = useTranslation();
 	const form = useForm({
 		schema: signUpFormSchema,
