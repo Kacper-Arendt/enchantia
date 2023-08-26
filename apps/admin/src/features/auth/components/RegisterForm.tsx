@@ -7,6 +7,7 @@ import { useAuth } from 'src/features/auth/hooks/useAuth';
 // COMPONENTS
 import { Button } from 'src/ui';
 import { Form, Input, useForm } from 'src/components/form';
+import { AuthLink } from 'src/features/auth/components/AuthLink';
 
 // STYLES
 import styles from 'src/features/auth/components/styles.module.css';
@@ -36,6 +37,8 @@ export const RegisterForm = ({ onFinish }: { onFinish?: () => void }) => {
 					{t('general.submit')}
 				</Button>
 			</Form>
+
+			<AuthLink to="auth/login" text={t('general.alreadyRegistered')} />
 		</div>
 	);
 };
