@@ -11,13 +11,13 @@ export const createUserByEmailAndPassword = (user: any) => {
 };
 
 export const findUserById = (id: string) =>
-	db.user.findUnique({
+	db.user.findFirst({
 		where: {
 			id,
 		},
 	});
 export const findUserByEmail = (email: string) =>
-	db.user.findUnique({
+	db.user.findFirst({
 		where: {
 			email,
 		},
