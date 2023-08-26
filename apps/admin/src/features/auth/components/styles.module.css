@@ -1,4 +1,23 @@
 /* ==================== */
+/* --> START Common <-- */
+/* ==================== */
+
+.redirectLink {
+    color: var(--grey20);
+    font-size: 1rem;
+    transition: all .5s;
+    margin-top: 1rem;
+}
+
+.redirectLink:hover {
+    color: var(--grey10);
+    transform: scale(1.1);
+}
+
+/* --> END Common  <-- */
+
+
+/* ==================== */
 /* --> START Layout <-- */
 /* ==================== */
 .layout {

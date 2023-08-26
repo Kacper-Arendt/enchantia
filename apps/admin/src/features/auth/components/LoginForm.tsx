@@ -12,25 +12,23 @@ import { AuthLink } from 'src/features/auth/components/AuthLink';
 // STYLES
 import styles from 'src/features/auth/components/styles.module.css';
 
-const signUpFormSchema = z.object({
-	name: z.string().min(3).max(20),
+const signInFormSchema = z.object({
 	email: z.string().email(),
 	password: z.string().min(6).max(126),
 });
 
-export const RegisterForm = ({ onFinish }: { onFinish?: () => void }) => {
+export const LoginForm = ({ onFinish }: { onFinish?: () => void }) => {
 	const { t } = useTranslation();
 	const form = useForm({
-		schema: signUpFormSchema,
-		defaultValues: { name: '', email: '', password: '' },
+		schema: signInFormSchema,
+		defaultValues: { email: '', password: '' },
 	});
-	const { register } = useAuth();
+	const { login } = useAuth();
 
 	return (
 		<div className={styles.registerFormWrapper}>
-			<h1 className={styles.formHeading}>{t('routes.register')}</h1>
-			<Form form={form} onSubmit={(item) => register(item, onFinish)} className={styles.registerForm}>
-				<Input name="name" type="text" control={form.control} label={t('general.name')} />
+			<h1 className={styles.formHeading}>{t('routes.login')}</h1>
+			<Form form={form} onSubmit={(item) => login(item, onFinish)} className={styles.registerForm}>
 				<Input name="email" type="email" control={form.control} label={t('general.email')} />
 				<Input name="password" type="password" control={form.control} label={t('general.password')} />
 				<Button type="submit" loading={false}>
@@ -38,7 +36,7 @@ export const RegisterForm = ({ onFinish }: { onFinish?: () => void }) => {
 				</Button>
 			</Form>
 
-			<AuthLink to="/auth/login" text={t('general.alreadyRegistered')} />
+			<AuthLink to="/auth/register" text={t('general.needAccount')} />
 		</div>
 	);
 };

@@ -1,9 +1,9 @@
 import { describe, vitest, it, expect } from 'vitest';
 import { screen, customRender } from 'src/__tests__/testUtils';
 import userEvent from '@testing-library/user-event';
-
-import { RegisterForm } from 'src/features/auth/components/RegisterForm';
 import { waitFor } from '@testing-library/react';
+
+import { RegisterForm } from 'src/features/auth/components';
 
 describe('should register new user', () => {
 	const onFinish = vitest.fn();
