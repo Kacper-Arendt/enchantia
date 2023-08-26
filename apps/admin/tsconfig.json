@@ -1,11 +1,22 @@
 {
-	"extends": "tsconfig/vite.json",
-	"compilerOptions": {
-		"rootDir": "src",
-		"outDir": "dist",
-		"baseUrl": "./",
-		"jsx": "react-jsx"
-	},
-	"exclude": ["node_modules", "dist"],
-	"include": ["src", "./.eslintrc.js"]
+  "extends": "tsconfig/vite.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": "./",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "vitest/globals",
+      "@testing-library/jest-dom"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "src",
+    "./.eslintrc.js"
+  ]
 }
