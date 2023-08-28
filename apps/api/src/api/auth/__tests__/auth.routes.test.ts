@@ -19,25 +19,33 @@ describe('Register route', () => {
 		const response = await request.post('/api/v1/auth/register').send({ password: user.password });
 
 		expect(response.status).toBe(400);
-		expect(response.body).toHaveProperty('message', 'You must provide an email and a password.');
+		expect(response.body).toHaveProperty('message', 'You must provide an email, password, and name');
 	});
 
 	it('should return error with status 400 when there is no password', async () => {
 		const response = await request.post('/api/v1/auth/register').send({ email: user.email });
 
 		expect(response.status).toBe(400);
-		expect(response.body).toHaveProperty('message', 'You must provide an email and a password.');
+		expect(response.body).toHaveProperty('message', 'You must provide an email, password, and name');
 	});
 
 	it('should return error with status 400 when password is to short', async () => {
-		const response = await request.post('/api/v1/auth/register').send({ email: user.email, password: '1234' });
+		const response = await request.post('/api/v1/auth/register').send({
+			email: user.email,
+			password: '1234',
+			name: 'john',
+		});
 
 		expect(response.status).toBe(400);
 		expect(response.body).toHaveProperty('message', 'Password must be at least 6 characters.');
 	});
 
 	it('should create new user and  return tokens', async () => {
-		const response = await request.post('/api/v1/auth/register').send({ email: user.email, password: user.password });
+		const response = await request.post('/api/v1/auth/register').send({
+			email: user.email,
+			password: user.password,
+			name: user.name,
+		});
 
 		expect(response.status).toBe(200);
 		expect(response.body).toHaveProperty('accessToken');

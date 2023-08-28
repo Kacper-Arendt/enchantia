@@ -15,6 +15,7 @@ model User {
   refreshTokens RefreshToken[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
+  Story         Story[]
 }
 
 model RefreshToken {
@@ -25,4 +26,39 @@ model RefreshToken {
   revoked     Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Story {
+  id              String             @id @unique @default(uuid())
+  name            String
+  ownerId         String
+  status          Status             @default(DRAFT)
+  User            User               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  publicationDate DateTime?
+  translations    StoryTranslation[]
+}
+
+model StoryTranslation {
+  language        String    @unique
+  storyId         String
+  title           String
+  content         String
+  status          Status    @default(DRAFT)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  publicationDate DateTime?
+  story           Story     @relation(fields: [storyId], references: [id])
+}
+
+enum Status {
+  DRAFT // The story is in draft stage.
+  REVIEW // The story has been submitted for review.
+  EDITING // The story is being edited.
+  PUBLISHED // The story has been published.
+  REJECTED // The story was rejected after review.
+  ARCHIVED // The published story has been archived.
+  PRIVATE // The story is private and visible to select users.
+  FEATURED // The story has been featured or highlighted.
 }
