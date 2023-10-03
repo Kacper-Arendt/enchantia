@@ -1,10 +1,15 @@
-// MIDDLEWARES
-import { isAuthenticated } from 'src/middlewares';
+import express from 'express';
 
-// ROUTES
-import { userRouter } from 'src/api/users/user.routes';
+// MIDDLEWARES
+import { isAuthenticated, validationResult } from 'src/middlewares';
 
 // CONTROLLERS
-import { createStory } from 'src/api/stories/stories.controllers';
+import { createStory, createStoryContent } from 'src/api/stories/stories.controllers';
 
-userRouter.post('/', isAuthenticated, createStory);
+// VALIDATIONS
+import { storiesValidateCreate, storiesValidateCreateContent } from 'src/api/stories/stories.validations';
+
+export const storiesRouter = express.Router();
+
+storiesRouter.post('/', isAuthenticated, storiesValidateCreate, validationResult, createStory);
+storiesRouter.post('/content', isAuthenticated, storiesValidateCreateContent, validationResult, createStoryContent);

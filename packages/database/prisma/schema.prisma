@@ -46,10 +46,11 @@ model StoryTranslation {
   title           String
   content         String
   status          Status    @default(DRAFT)
+  description     String
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
   publicationDate DateTime?
-  story           Story     @relation(fields: [storyId], references: [id])
+  story           Story     @relation(fields: [storyId], references: [id], onDelete: Cascade)
 }
 
 enum Status {
