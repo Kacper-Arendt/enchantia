@@ -29,19 +29,16 @@ model RefreshToken {
 }
 
 model Story {
-  id              String             @id @unique @default(uuid())
-  name            String
-  ownerId         String
-  status          Status             @default(DRAFT)
-  User            User               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  createdAt       DateTime           @default(now())
-  updatedAt       DateTime           @updatedAt
-  publicationDate DateTime?
-  translations    StoryTranslation[]
+  id           String             @id @unique @default(uuid())
+  name         String
+  ownerId      String
+  User         User               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  translations StoryTranslation[]
 }
 
 model StoryTranslation {
-  language        String    @unique
+  id              String    @id @unique @default(uuid())
+  language        String
   storyId         String
   title           String
   content         String
@@ -56,10 +53,10 @@ model StoryTranslation {
 enum Status {
   DRAFT // The story is in draft stage.
   REVIEW // The story has been submitted for review.
-  EDITING // The story is being edited.
+  ACCEPTED // The story has been accepted for publication.
   PUBLISHED // The story has been published.
+  EDITING // The story is being edited.
   REJECTED // The story was rejected after review.
   ARCHIVED // The published story has been archived.
   PRIVATE // The story is private and visible to select users.
-  FEATURED // The story has been featured or highlighted.
 }

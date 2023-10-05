@@ -4,7 +4,7 @@ import express from 'express';
 import { isAuthenticated, validationResult } from 'src/middlewares';
 
 // CONTROLLERS
-import { createStory, createStoryContent } from 'src/api/stories/stories.controllers';
+import { createStory, createStoryContent } from 'src/api/stories/stories.controller';
 
 // VALIDATIONS
 import { storiesValidateCreate, storiesValidateCreateContent } from 'src/api/stories/stories.validations';
@@ -12,4 +12,5 @@ import { storiesValidateCreate, storiesValidateCreateContent } from 'src/api/sto
 export const storiesRouter = express.Router();
 
 storiesRouter.post('/', isAuthenticated, storiesValidateCreate, validationResult, createStory);
+
 storiesRouter.post('/content', isAuthenticated, storiesValidateCreateContent, validationResult, createStoryContent);
