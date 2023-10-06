@@ -6,4 +6,5 @@ export const userDto = (user: User): Omit<User, 'password'> => ({
 	email: user.email,
 	createdAt: user.createdAt,
 	updatedAt: user.updatedAt,
+	name: user.name,
 });

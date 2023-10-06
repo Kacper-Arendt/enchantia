@@ -22,7 +22,7 @@ export interface AuthSuccessInterfaces {
 export const register = async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { email, password, name } = req.body;
-		if (!email || !password || name) return res.status(400).json({ message: 'You must provide an email, password, and name' });
+		if (!email || !password || !name) return res.status(400).json({ message: 'You must provide an email, password, and name' });
 
 		if (password.length < 6) return res.status(400).json({ message: 'Password must be at least 6 characters.' });
 
