@@ -1,7 +1,7 @@
 import { getMockReq, getMockRes } from '@jest-mock/express';
 
 // CONTROLLERS
-import { createStory } from 'src/api/stories/stories.controllers';
+import { createStory } from 'src/api/stories/stories.controller';
 
 // HELPERS
 import { testUser } from 'src/__testUtils__/helpers';

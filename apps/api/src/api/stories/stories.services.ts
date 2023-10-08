@@ -11,6 +11,32 @@ export const getStoryService = ({ id }: Pick<Story, 'id'>) =>
 		},
 	});
 
+export const getAllStoryByOwnerIdService = ({ ownerId }: Pick<Story, 'ownerId'>) =>
+	db.story.findMany({
+		where: { ownerId },
+		include: {
+			translations: true,
+		},
+	});
+
+export const getAllPublishedStory = () =>
+	db.story.findMany({
+		where: {
+			translations: {
+				some: {
+					status: 'PUBLISHED',
+				},
+			},
+		},
+		include: {
+			translations: {
+				where: {
+					status: 'PUBLISHED',
+				},
+			},
+		},
+	});
+
 export const createStoryService = (data: Pick<Story, 'name' | 'ownerId'>) =>
 	db.story.create({
 		data: { ...data, translations: { create: [] } },
