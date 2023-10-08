@@ -17,11 +17,13 @@ import { storiesValidateCreate, storiesValidateCreateContent } from 'src/api/sto
 
 export const storiesRouter = express.Router();
 
-storiesRouter.post('/', isAuthenticated, storiesValidateCreate, validationResult, createStory);
-storiesRouter.post('/content', isAuthenticated, storiesValidateCreateContent, validationResult, createStoryContent);
-
+// ADMIN
 storiesRouter.get('/admin', isAuthenticated, getAllUserStories);
 storiesRouter.get('/admin/:id', isAuthenticated, getStory);
 
+storiesRouter.post('/', isAuthenticated, storiesValidateCreate, validationResult, createStory);
+storiesRouter.post('/content', isAuthenticated, storiesValidateCreateContent, validationResult, createStoryContent);
+
+// WEB
 storiesRouter.get('/web', isAuthenticated, getAllPublishedStories);
 storiesRouter.get('/web/:id', isAuthenticated, getStory);
