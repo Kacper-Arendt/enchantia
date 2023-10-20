@@ -5,7 +5,7 @@ import { Routes } from 'src/routes';
 import { AppProviders } from 'src/providers/AppProviders';
 
 // STYLES
-import 'src/App.module.css';
+import 'src/App.module.scss';
 
 const App = () => (
 	<AppProviders>
