@@ -10,7 +10,7 @@ import { Form, Input, useForm } from 'src/components/form';
 import { AuthLink } from 'src/features/auth/components/AuthLink';
 
 // STYLES
-import styles from 'src/features/auth/components/styles.module.css';
+import styles from 'src/features/auth/components/styles.module.scss';
 
 const signInFormSchema = z.object({
 	email: z.string().email(),

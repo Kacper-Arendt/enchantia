@@ -1,0 +1,12 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.button {
+  @include flex-center(0.5rem);
+  padding: 0.5rem;
+    
+  font-size: $fw-medium;
+  background-color: $primary;
+  border-radius: $border3;
+  border: none;
+}

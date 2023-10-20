@@ -1,7 +1,7 @@
 import { Button as MuiButton, ButtonProps } from '@mui/base/Button';
 import { LuLoader } from 'react-icons/lu';
 
-import styles from 'src/ui/button/styles.module.css';
+import styles from 'src/ui/button/styles.module.scss';
 
 interface ButtonInterface extends ButtonProps {
 	variant?: 'outlined' | 'contained' | 'text';

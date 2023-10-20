@@ -1,0 +1,59 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+/* ==================== */
+/* --> START Common <-- */
+/* ==================== */
+
+.redirectLink {
+  color: $grey20;
+  font-size: $fz-normal;
+  transition: all 0.5s;
+  margin-top: 1rem;
+}
+
+.redirectLink:hover {
+  color: $grey10;
+  transform: scale(1.1);
+}
+
+/* --> END Common  <-- */
+
+/* ==================== */
+/* --> START Layout <-- */
+/* ==================== */
+.layout {
+  @include flex-center-column();
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.appLangSelect {
+  margin-left: auto;
+}
+
+/* --> END Layout  <-- */
+
+/* ==================== */
+/* --> START Register <-- */
+/* ==================== */
+.registerFormWrapper {
+  @include flex-center-column(0.75rem);
+  margin: auto;
+  padding: 1rem;
+  border: 1px solid $grey60;
+  border-radius: $border3;
+  background-color: $grey100;
+  width: 20rem;
+}
+
+.formHeading {
+  color: $grey10;
+}
+
+.registerForm {
+  @include flex-column(0.75rem);
+  width: 100%;
+}
+
+/* --> END Register <-- */

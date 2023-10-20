@@ -1,14 +1,15 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
 /* ==================== */
 /* --> START Label <-- */
 /* ==================== */
 .label {
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.2rem;
+  @include flex-column(0.2rem);
 
-    font-size: 1rem;
-    color: var(--grey10);
-    font-weight: var(--font-weight-medium);
+  font-size: $fz-normal;
+  color: $grey10;
+  font-weight: $fw-medium;
 }
 
 /* --> END Label  <-- */
@@ -17,9 +18,8 @@
 /* --> START FieldError <-- */
 /* ==================== */
 .fieldError {
-    color: var(--danger);
-    font-size: 1rem;
+  color: $danger;
+  font-weight: $fw-medium;
 }
 
 /* --> END FieldError  <-- */
-

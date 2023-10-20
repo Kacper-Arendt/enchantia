@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 
 // STYLES
-import styles from 'src/components/form/common/styles.module.css';
+import styles from 'src/components/form/common/styles.module.scss';
 
 export const FieldError = ({ name }: { name?: string }) => {
 	const {

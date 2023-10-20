@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { ErrorMessage, ErrorMessageInterface } from 'src/components/form/common/ErrorMessage';
 
 // STYLES
-import styles from 'src/components/form/common/styles.module.css';
+import styles from 'src/components/form/common/styles.module.scss';
 
 export interface LabelInterface extends ErrorMessageInterface {
 	label?: string;

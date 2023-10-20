@@ -8,7 +8,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Label } from 'src/components/form/common';
 
 // STYLES
-import styles from 'src/components/form/components/styles.module.css';
+import styles from 'src/components/form/components/styles.module.scss';
 
 interface InputInterface {
 	name: string;
