@@ -73,7 +73,8 @@
     "areYouSure": "Czy na pewno chcesz to zrobić?",
     "success": "Sukces",
     "error": "Błąd",
-    "loading": "Ładowanie"
+    "loading": "Ładowanie",
+    "logout": "Wyloguj"
   },
   "routes": {
     "register": "Rejestracja",

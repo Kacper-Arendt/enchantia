@@ -14,6 +14,10 @@
 	height: 3rem;
 }
 
+.headerNav {
+	flex: 1;
+}
+
 .aside {
 	@include flex-column(0.5rem);
 	@include box(60%, 100%);
@@ -59,4 +63,6 @@
 
 .appName {
 	color: $grey10;
+	font-size: $fz-large;
+	font-weight: $fw-medium;
 }

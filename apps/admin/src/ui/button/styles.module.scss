@@ -2,11 +2,44 @@
 @import 'src/styles/mixins';
 
 .button {
-  @include flex-center(0.5rem);
-  padding: 0.5rem;
-    
-  font-size: $fw-medium;
-  background-color: $primary;
-  border-radius: $border3;
-  border: none;
+	@include flex-center(0.5rem);
+
+	border: none;
+	background: none;
+	font-size: $fz-normal;
+	border-radius: $border3;
+	color: $grey20;
 }
+
+/* ==================== */
+/* --> START Variant <-- */
+/* ==================== */
+
+.outlined {
+	background: none;
+	border: 1px solid $primary;
+}
+.contained {
+	background-color: $primary;
+}
+.text {
+	color: $primary;
+}
+/* --> END Variant <-- */
+
+/* ==================== */
+/* --> START Size <-- */
+/* ==================== */
+
+.sm {
+	padding: 0.25rem;
+}
+
+.md {
+	padding: 0.5rem;
+}
+
+.lg {
+	padding: 0.75rem;
+}
+/* --> END Size <-- */
