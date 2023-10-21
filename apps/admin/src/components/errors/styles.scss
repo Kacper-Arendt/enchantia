@@ -1,0 +1,32 @@
+@import 'src/styles/mixins';
+@import 'src/styles/variables';
+
+.notFound {
+	@include flex-center-column;
+	gap: 1.5rem;
+	height: 100%;
+	padding: 2rem;
+	text-align: center;
+
+	.title {
+		color: $warning;
+	}
+
+	.description {
+		color: $grey10;
+		font-size: $fz-medium;
+	}
+
+	.go-back {
+		font-size: $fz-large;
+		color: $grey10;
+	}
+}
+
+.fallbackError {
+	@include flex-center;
+	gap: 1.5rem;
+	padding: 0.5rem;
+	text-align: center;
+	color: $danger;
+}

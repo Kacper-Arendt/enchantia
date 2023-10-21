@@ -1,0 +1,58 @@
+@use 'sass:color';
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.privateLayout {
+	@include flex-column();
+}
+
+.header {
+	@include flex-center-vert();
+	padding: 0.5rem;
+	background-color: $header-bg-color;
+	border-bottom: 1px solid lighten($header-bg-color, 30%);
+	height: 3rem;
+}
+
+.aside {
+	@include flex-column(0.5rem);
+	@include box(60%, 100%);
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: $header-bg-color;
+	transform: translateX(-100%);
+	padding: 0.5rem;
+	text-align: left;
+	transition: transform 0.3s ease-in-out;
+	z-index: $z-index2;
+	overflow: hidden;
+	border-right: 1px solid lighten($header-bg-color, 30%);
+
+	@include media-md {
+		transform: translateX(0);
+		width: 13rem;
+	}
+}
+
+.openAside {
+	transform: translateX(0);
+}
+.asideHeader {
+	@include flex-center-vert();
+	justify-content: flex-end;
+}
+
+.toggleNavButton {
+	@include flex-center();
+	background: none;
+	outline: none;
+	border: none;
+	font-size: 1.75rem;
+	color: $grey10;
+
+	@include media-md {
+		display: none;
+	}
+}
