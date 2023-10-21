@@ -7,7 +7,7 @@
 }
 
 .header {
-	@include flex-center-vert();
+	@include flex-center-vert(0.5rem);
 	padding: 0.5rem;
 	background-color: $header-bg-color;
 	border-bottom: 1px solid lighten($header-bg-color, 30%);
@@ -41,7 +41,7 @@
 }
 .asideHeader {
 	@include flex-center-vert();
-	justify-content: flex-end;
+	justify-content: space-between;
 }
 
 .toggleNavButton {
@@ -49,10 +49,14 @@
 	background: none;
 	outline: none;
 	border: none;
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 	color: $grey10;
 
 	@include media-md {
 		display: none;
 	}
+}
+
+.appName {
+	color: $grey10;
 }
