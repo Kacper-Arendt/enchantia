@@ -73,7 +73,8 @@
     "areYouSure": "Are you sure you want to do this?",
     "success": "Success",
     "error": "Error",
-    "loading": "Loading"
+    "loading": "Loading",
+    "logout": "Logout"
   },
   "routes": {
     "register": "Register",

@@ -1,0 +1,65 @@
+@import 'src/styles/variables';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  letter-spacing: 1.15px;
+  line-height: 1.5;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+.Toastify__toast-icon {
+  display: inline !important;
+}
+
+
+body {
+  background-color: $main-bg-color;
+  font-family: 'Roboto', sans-serif;
+  color: $grey10;
+}

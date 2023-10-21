@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { AppLangSelect } from 'src/components/internalization';
 
 // STYLES
-import styles from 'src/features/auth/components/styles.module.css';
+import styles from 'src/features/auth/components/styles.module.scss';
 
 export const Layout = ({ children }: { children: ReactNode }) => (
 	<div className={styles.layout}>

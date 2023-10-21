@@ -2,10 +2,10 @@ import { Select, Option } from '@mui/base';
 
 // HOOKS
 import { supportedI18nLangs } from 'src/lib/i18nconfig';
-import { useTranslatedLang } from './useTranslatedLang';
+import { useTranslatedLang } from 'src/ui/langSelect/useTranslatedLang';
 
 // STYLES
-import styles from './styles.module.css';
+import styles from 'src/ui/langSelect/styles.module.scss';
 
 export interface LangSelectInterface {
 	defaultValue: string;
