@@ -42,7 +42,7 @@ export const PrivateLayoutAside = ({ isOpen, setIsOpen }: { isOpen: boolean; set
 
 				<nav className={styles.headerNav}>
 					{routes.map(({ path, title }) => (
-						<Link key={path} to={path} search={{}} params={{}}>
+						<Link key={path} to={path} search={{}} params={{}} className={styles.navLink}>
 							{t(`routes.${title}`)}
 						</Link>
 					))}

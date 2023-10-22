@@ -19,6 +19,19 @@
 	flex: 1;
 }
 
+.navLink {
+	color: $grey60;
+	transition: color 0.2s;
+
+	&:hover {
+		color: $grey40;
+	}
+
+	&[data-status='active'] {
+		color: $grey10;
+	}
+}
+
 .aside {
 	@include flex-column(0.5rem);
 	@include box(60%, 100%);
@@ -47,6 +60,7 @@
 .asideHeader {
 	@include flex-center-vert();
 	justify-content: space-between;
+	padding-bottom: 1rem;
 }
 
 .toggleNavButton {
