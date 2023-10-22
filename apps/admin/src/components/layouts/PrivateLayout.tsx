@@ -20,7 +20,7 @@ export const PrivateLayout = () => {
 				<PrivateLayoutAside isOpen={openAside} setIsOpen={setOpenAside} />
 
 				<ErrorBoundary FallbackComponent={FallbackError}>
-					<main>
+					<main className={styles.main}>
 						<Outlet />
 					</main>
 				</ErrorBoundary>

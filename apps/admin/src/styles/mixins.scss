@@ -1,61 +1,82 @@
 @import 'src/styles/variables';
 
 @mixin box($width, $height: $width) {
-  width: $width;
-  height: $height;
+	width: $width;
+	height: $height;
 }
 
+/* ==================== */
+/* --> START Flex <-- */
+/* ==================== */
+
 @mixin flex-column($gap: 0) {
-  display: flex;
-  flex-direction: column;
-  gap: $gap;
+	display: flex;
+	flex-direction: column;
+	gap: $gap;
 }
 
 @mixin flex-center($gap: 0) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $gap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: $gap;
 }
 
 @mixin flex-center-column($gap: 0) {
-  @include flex-center;
-  flex-direction: column;
-  gap: $gap;
+	@include flex-center;
+	flex-direction: column;
+	gap: $gap;
 }
 
 @mixin flex-center-vert($gap: 0) {
-  display: flex;
-  align-items: center;
-  gap: $gap;
+	display: flex;
+	align-items: center;
+	gap: $gap;
 }
 
 @mixin flex-center-horiz($gap: 0) {
-  display: flex;
-  justify-content: center;
-  gap: $gap;
+	display: flex;
+	justify-content: center;
+	gap: $gap;
 }
+/* --> END Flex  <-- */
+
+/* ==================== */
+/* --> START Grid */
+/* ==================== */
+
+@mixin grid-list($itemWidth: 0, $gap: 0) {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax($itemWidth, 1fr));
+	gap: $gap;
+}
+/* --> END Grid */
+
+/* ==================== */
+/* --> START Media queries <-- */
+/* ==================== */
 
 @mixin media-sm {
-  @media (max-width: $sm-breakpoint) {
-    @content;
-  }
+	@media (max-width: $sm-breakpoint) {
+		@content;
+	}
 }
 
 @mixin media-md {
-  @media (min-width: $md-breakpoint) {
-    @content;
-  }
+	@media (min-width: $md-breakpoint) {
+		@content;
+	}
 }
 
 @mixin media-lg {
-  @media (min-width: $lg-breakpoint) {
-    @content;
-  }
+	@media (min-width: $lg-breakpoint) {
+		@content;
+	}
 }
 
 @mixin media-xl {
-  @media (min-width: $xl-breakpoint) {
-    @content;
-  }
+	@media (min-width: $xl-breakpoint) {
+		@content;
+	}
 }
+/* --> END Media queries */

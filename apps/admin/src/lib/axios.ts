@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 // MODELS
 import { AuthResponseInterface } from 'src/features/auth/models';
@@ -16,16 +16,14 @@ export const client = axios.create({
 
 client.defaults.headers.common['Content-Type'] = 'application/json';
 
-client.interceptors.request.use(
-	(config) => {
-		if (config.withCredentials) {
-			const { accessToken } = useAppStore.getState();
-			if (accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
-		}
-		return config;
-	},
-	(error) => Promise.reject(error),
-);
+client.interceptors.request.use((config) => {
+	const withCredentials = config?.withCredentials ?? true;
+	if (withCredentials) {
+		const { accessToken } = useAppStore.getState();
+		if (accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
+	}
+	return config;
+});
 
 let failedQueue: any[] = [];
 let isRefreshing = false;
@@ -39,13 +37,12 @@ const processQueue = (error: any) => {
 	failedQueue = [];
 };
 
-client.interceptors.response.use(({ data }: { data: AxiosResponse<unknown, unknown> }) => data);
+client.interceptors.response.use((response) => response.data);
 
 client.interceptors.response.use(
 	(response) => response,
-	(error) => {
+	(error: any) => {
 		const originalRequest = error.config;
-		// originalRequest.headers = JSON.parse(JSON.stringify(originalRequest.headers || {}));
 		const { refreshToken, clearRefreshToken, clearAccessToken, addRefreshToken, addAccessToken } = useAppStore.getState();
 
 		const handleError = (err: any) => {
@@ -58,8 +55,8 @@ client.interceptors.response.use(
 
 		if (
 			refreshToken &&
-			error.response?.status === 401 &&
-			error.response.data.message === 'TokenExpiredError' &&
+			error?.response?.status === 401 &&
+			error?.response.data.message === 'TokenExpiredError' &&
 			// eslint-disable-next-line no-underscore-dangle
 			originalRequest?._retry !== true
 		) {

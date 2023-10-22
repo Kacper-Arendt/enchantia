@@ -14,6 +14,8 @@
   "dependencies": {
     "@hookform/resolvers": "^3.2.0",
     "@mui/base": "5.0.0-beta.10",
+    "@tanstack/react-query": "^5.0.0",
+    "@tanstack/react-query-devtools": "^5.0.3",
     "@tanstack/react-router": "0.0.1-beta.194",
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
@@ -52,6 +54,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "msw": "^1.2.3",
     "tsconfig": "workspace:*",
+    "type-fest": "0.20.2",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
     "vitest": "^0.34.1"

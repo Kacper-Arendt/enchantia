@@ -1,1 +1,1 @@
-export * from 'src/features/stories/routes/StoriesList';
+export * from 'src/features/stories/routes/Stories';
