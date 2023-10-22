@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-throw-literal */
-
-import { RouterProvider, Router, Route, RootRoute, redirect } from '@tanstack/router';
+import { RouterProvider, Router, Route, RootRoute, redirect, Link } from '@tanstack/react-router';
 
 // STORE
 import { useAppStore } from 'src/store';
@@ -9,17 +7,21 @@ import { useAppStore } from 'src/store';
 import { Login, Register } from 'src/features/auth';
 import { Dashboard } from 'src/features/misc';
 import { PrivateLayout } from 'src/components/layouts';
+import { StoriesList } from 'src/features/stories';
 
-const rootRoute = new RootRoute();
+const rootRoute = new RootRoute({});
 
 const nonMatchingRoute = new Route({
 	getParentRoute: () => rootRoute,
 	path: '*',
-	beforeLoad: async () => {
-		throw redirect({
-			to: '/',
-		});
-	},
+	component: () => (
+		<div>
+			Route does not exists
+			<Link to="/" search={{}} params={{}}>
+				Home
+			</Link>
+		</div>
+	),
 });
 
 // ====================
@@ -73,11 +75,13 @@ const privateRoutes = new Route({
 });
 const DashboardRoute = new Route({ getParentRoute: () => privateRoutes, path: '/', component: Dashboard });
 
+const StoriesListRoute = new Route({ getParentRoute: () => privateRoutes, path: '/stories', component: StoriesList });
+
 // --> END Private Routes  <--
 
 const routeTree = rootRoute.addChildren([
 	authRoutes.addChildren([RegisterRoute, LoginRoute]),
-	privateRoutes.addChildren([DashboardRoute]),
+	privateRoutes.addChildren([DashboardRoute, StoriesListRoute]),
 	nonMatchingRoute,
 ]);
 
@@ -85,7 +89,12 @@ export const router = new Router({ routeTree });
 
 export const Routes = () => <RouterProvider router={router} />;
 
-declare module '@tanstack/router' {
+export const routes: { path: keyof (typeof router)['routesByPath']; title: string }[] = [
+	{ path: '/', title: 'dashboard' },
+	{ path: '/stories', title: 'storiesList' },
+];
+
+declare module '@tanstack/react-router' {
 	interface Register {
 		router: typeof router;
 	}

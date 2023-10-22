@@ -1,4 +1,4 @@
-import { useNavigate, useSearch } from '@tanstack/router';
+import { useNavigate, useSearch } from '@tanstack/react-router';
 
 // COMPONENTS
 import { Layout, LoginForm } from 'src/features/auth/components';

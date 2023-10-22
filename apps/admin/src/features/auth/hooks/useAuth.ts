@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { useNavigate } from '@tanstack/router';
+import { useNavigate } from '@tanstack/react-router';
 
 // API
 import {

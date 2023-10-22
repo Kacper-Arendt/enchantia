@@ -1,7 +1,7 @@
 // MODELS
 
 // COMPONENTS
-import { Link } from '@tanstack/router';
+import { Link } from '@tanstack/react-router';
 
 // STYLES
 import styles from 'src/features/auth/components/styles.module.scss';
