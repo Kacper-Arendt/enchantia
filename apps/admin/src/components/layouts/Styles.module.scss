@@ -4,23 +4,52 @@
 
 .privateLayout {
 	@include flex-column();
+	height: 100%;
+	@include media-md {
+		display: grid;
+		grid-template-columns: 13rem 1fr;
+		grid-template-rows: 3rem 1fr;
+		grid-template-areas:
+			'header header'
+			'aside main';
+	}
 }
 
 .header {
+	grid-area: header;
 	@include flex-center-vert(0.5rem);
 	padding: 0.5rem;
 	background-color: $header-bg-color;
 	border-bottom: 1px solid lighten($header-bg-color, 30%);
 	height: 3rem;
+
+	@include media-md {
+		height: 100%;
+	}
 }
 
 .headerNav {
+	@include flex-column(0.5rem);
 	flex: 1;
+}
+
+.navLink {
+	color: $grey60;
+	transition: color 0.2s;
+
+	&:hover {
+		color: $grey40;
+	}
+
+	&[data-status='active'] {
+		color: $grey10;
+	}
 }
 
 .aside {
 	@include flex-column(0.5rem);
 	@include box(60%, 100%);
+	grid-area: aside;
 
 	position: fixed;
 	top: 0;
@@ -35,8 +64,9 @@
 	border-right: 1px solid lighten($header-bg-color, 30%);
 
 	@include media-md {
+		position: initial;
 		transform: translateX(0);
-		width: 13rem;
+		width: 100%;
 	}
 }
 
@@ -45,7 +75,7 @@
 }
 .asideHeader {
 	@include flex-center-vert();
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 
 .toggleNavButton {
@@ -65,4 +95,10 @@
 	color: $grey10;
 	font-size: $fz-large;
 	font-weight: $fw-medium;
+}
+
+.main{
+	grid-area: main;
+	height: 100%;
+	overflow: auto;
 }

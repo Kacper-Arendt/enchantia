@@ -1,0 +1,25 @@
+@use 'sass:color';
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.storiesList {
+	@include grid-list(15.5rem, 1rem);
+	padding: $main-padding;
+}
+
+.storyListItem {
+	@include flex-column(0.5rem);
+	padding: 0.5rem;
+	border: 1px solid $grey60;
+	border-radius: $border2;
+	color: $grey10;
+
+	p {
+		font-size: $fz-medium;
+		text-transform: capitalize;
+	}
+	span {
+		font-size: $fz-small;
+		color: $grey40;
+	}
+}

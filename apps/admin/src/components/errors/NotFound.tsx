@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/router';
+import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
 // STYLES
