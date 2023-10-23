@@ -1,12 +1,23 @@
 @import 'src/styles/variables';
+@import 'src/styles/mixins';
 
 .loader {
-	width: 1rem;
 	aspect-ratio: 1;
 	border: 0.15rem solid $grey10;
 	border-bottom-color: $primary;
 	border-radius: 50%;
 	animation: rotation 1s linear infinite;
+
+	&.sm {
+		width: 1rem;
+	}
+
+	&.md {
+		width: 2.5rem;
+	}
+	&.lg {
+		width: 4rem;
+	}
 
 	@keyframes rotation {
 		0% {

@@ -1,6 +1,7 @@
 import { QueryErrorResetBoundary } from '@tanstack/react-query';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { ReactNode, Suspense } from 'react';
+import { Loader } from 'src/components/loaders';
 
 const ErrorView = ({ error, resetErrorBoundary }: FallbackProps) => (
 	<div>
@@ -11,7 +12,7 @@ const ErrorView = ({ error, resetErrorBoundary }: FallbackProps) => (
 	</div>
 );
 
-const LoadingView = () => <div>Loading...</div>;
+const LoadingView = () => <Loader size="md" />;
 
 export const QueryBoundaries = ({ children }: { children: ReactNode }) => (
 	<QueryErrorResetBoundary>

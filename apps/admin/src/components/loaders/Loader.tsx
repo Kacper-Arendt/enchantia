@@ -1,4 +1,8 @@
-// STYLES
-import 'src/components/loaders/styles.scss';
+import clsx from 'clsx';
 
-export const Loader = () => <p className="loader" />;
+// STYLES
+import styles from 'src/components/loaders/styles.module.scss';
+
+export const Loader = ({ size = 'sm' }: { size?: 'sm' | 'md' | 'lg' }) => (
+	<p className={clsx(styles.loader, { [styles[size]]: true })} />
+);

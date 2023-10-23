@@ -10,7 +10,7 @@
 		grid-template-columns: 13rem 1fr;
 		grid-template-rows: 3rem 1fr;
 		grid-template-areas:
-			'aside header'
+			'header header'
 			'aside main';
 	}
 }
@@ -75,8 +75,7 @@
 }
 .asideHeader {
 	@include flex-center-vert();
-	justify-content: space-between;
-	padding-bottom: 1rem;
+	justify-content: flex-end;
 }
 
 .toggleNavButton {

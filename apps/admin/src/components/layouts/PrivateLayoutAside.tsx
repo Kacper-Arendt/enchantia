@@ -17,7 +17,6 @@ import { Button } from 'src/ui';
 import styles from 'src/components/layouts/Styles.module.scss';
 
 // UTILS
-import { envs } from 'src/config/envs';
 import { routes } from 'src/routes';
 
 export const PrivateLayoutAside = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (value: boolean) => void }) => {
@@ -30,11 +29,6 @@ export const PrivateLayoutAside = ({ isOpen, setIsOpen }: { isOpen: boolean; set
 		<ErrorBoundary FallbackComponent={FallbackError}>
 			<aside className={clsx(styles.aside, { [styles.openAside]: isOpen })} ref={ref}>
 				<div className={styles.asideHeader}>
-					{envs.appName && (
-						<Link to="/" className={styles.appName}>
-							{envs.appName}
-						</Link>
-					)}
 					<button type="button" onClick={() => setIsOpen(false)} className={styles.toggleNavButton}>
 						<AiOutlineClose />
 					</button>
