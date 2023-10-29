@@ -7,7 +7,7 @@ import { useAppStore } from 'src/store';
 import { Login, Register } from 'src/features/auth';
 import { Dashboard } from 'src/features/misc';
 import { PrivateLayout } from 'src/components/layouts';
-import { Stories } from 'src/features/stories';
+import { Stories, Story } from 'src/features/stories';
 
 const rootRoute = new RootRoute({});
 
@@ -76,12 +76,13 @@ const privateRoutes = new Route({
 const DashboardRoute = new Route({ getParentRoute: () => privateRoutes, path: '/', component: Dashboard });
 
 const StoriesListRoute = new Route({ getParentRoute: () => privateRoutes, path: '/stories', component: Stories });
+const StoryRoute = new Route({ getParentRoute: () => privateRoutes, path: '/stories/$id', component: Story });
 
 // --> END Private Routes  <--
 
 const routeTree = rootRoute.addChildren([
 	authRoutes.addChildren([RegisterRoute, LoginRoute]),
-	privateRoutes.addChildren([DashboardRoute, StoriesListRoute]),
+	privateRoutes.addChildren([DashboardRoute, StoriesListRoute, StoryRoute]),
 	nonMatchingRoute,
 ]);
 

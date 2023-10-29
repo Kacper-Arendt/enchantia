@@ -1,5 +1,6 @@
 {
   "general": {
+    "title":"Tytuł",
     "dashboard": "Panel główny",
     "settings": "Ustawienia",
     "permissions": "Uprawnienia",

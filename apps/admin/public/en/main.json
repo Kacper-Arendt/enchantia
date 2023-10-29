@@ -1,5 +1,6 @@
 {
   "general": {
+    "title":"Title",
     "dashboard": "Dashboard",
     "settings": "Settings",
     "permissions": "Permissions",

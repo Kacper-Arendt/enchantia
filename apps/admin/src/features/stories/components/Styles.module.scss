@@ -23,3 +23,24 @@
 		color: $grey40;
 	}
 }
+
+/* ==================== */
+/* --> START StoryHeader <-- */
+/* ==================== */
+.storiesListHeader{
+	@include flex-column(.5rem);
+	padding: 1rem;
+
+	border: 1px solid $grey10;
+	border-radius: $border2;
+
+	p{
+		color: $grey40;
+	}
+
+		@include media-md {
+			max-width: 18rem;
+		}
+}
+
+/* --> END StoryHeader <-- */

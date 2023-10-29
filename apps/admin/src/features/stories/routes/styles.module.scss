@@ -1,0 +1,11 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+/* ==================== */
+/* --> START Story <-- */
+/* ==================== */
+.storyWrapper{
+	padding: $main-padding;
+}
+
+/* --> END Story <-- */
